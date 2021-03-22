@@ -3,22 +3,25 @@ typedef long long ll;
 using namespace std;
 
 int main() {
-    int a[30],max=0;
-    for(int i=0; i<26; i++){
-        cin>>a[i];
-    }
-    string str;
-    cin>>str;
-    int b[30] ={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    for(int i=0; i<str.length();i++){
-        for(int j=0; j<26; j++){
-            if(str[i]==b[j]){
-                if(max<a[j]){
-                    max=a[j];
-                }
-            }
+    int t,n,ans;
+    cin>>t;
+    while(t--){
+        cin>>n;
+        if(n==0){
+            cout<<1<<"\n";
         }
+        else{ans=1;
+            for(int i=1; i<=n; i++ ){
+
+                if(i%2 != 0){
+                  ans*=2;
+                }
+                else{ans+=1;}
+            }
+            cout<<ans<<"\n";
+        }
+
     }
-    cout<<max*(str.length());
+
     return 0;
 }
