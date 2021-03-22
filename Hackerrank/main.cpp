@@ -3,23 +3,22 @@ typedef long long ll;
 using namespace std;
 
 int main() {
-    int t,n,k;
-    cin>>t;
-    while(t--){
-        cin>>n>>k;
-        int a[n],count=0;
-        for(int i=0; i<n; i++){
-            cin>>a[i];
+    int i,j,k,rem,rev,num,value,count=0;
+    cin>>i>>j>>k;
+    for(int x=i; x<=j; x++){
+        num=x;
+        rev=0;
+        while(num>0){
+           rem=num%10;
+           rev=rev*10 + rem;
+           num/=10;
         }
-        for(int i=0; i<n; i++){
-            if(a[i]<=0){
-                count++;
-            }
+        value = abs(x-rev) / k;
+        if(value*k == abs(x-rev) ){
+            count++;
         }
-        if(count>=k){
-            cout<<"NO"<<"\n";
-        }else{cout<<"YES"<<"\n";}
     }
+    cout<<count;
 
     return 0;
 }
