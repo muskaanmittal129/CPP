@@ -1,22 +1,22 @@
 #include <bits/stdc++.h>
-typedef long long ll;
 using namespace std;
+typedef long long int ll;
+#define FASTIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout<<fixed;cout.precision(10);
 
 int main() {
-    int n, ans;
-    cin>>n;
-    vector<int> a(n), b(n);
-    for(int i=1; i<=n; i++){
-        cin>>a[i];
-    }
-    for(int i=1; i<=n; i++){
-        ans = a[a[a[i]]];
+    FASTIO
+    int n, k, count = 0;
+    cin >> n;
+    int arr[] = {100, 20, 10, 5, 1};
+    for(int i = 0; i < 5; i++){
+        if(n == 0) break;
+        else if(arr[i] <= n){
+            k = n / arr[i];
+            n = n - (k * arr[i]);
+            count+=k;
+        }
 
-        b[ans] = a[i];
     }
-    for(int i=1; i<=n; i++){
-        cout<<b[i]<<"\n";
-    }
-
+    cout << count;
     return 0;
 }
