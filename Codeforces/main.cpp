@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 #define ll              long long int
 #define mod             1000000007
 #define pi              3.141592653589793238
@@ -10,23 +11,24 @@ using namespace std;
 
 int main() {
     FASTIO
-    string s;
-    cin >> s;
-    int len = s.size(), count = 0;
-    for(int i = 0; i < len; i++){
-        if(s[i] == 'Q'){
-            for(int j = i+1; j < len; j++){
-                if(s[j] == 'A'){
-                    for(int k = j+1; k < len; k++){
-                        if(s[k] == 'Q'){
-                            count++;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    int t;
+    cin >> t;
+    while(t--){
+        ll n;
+        cin >> n;
+        string s = to_string(n);
+        ll dig = s.length();
+        ll k = dig - 4;
+        ll count = 0;
 
-    cout << count;
+        while(n >= 2050){
+            ll num = 2050 * (pow(10, k));
+             count = count + (n / num);
+             n = n % num;
+            if(n < num) k--;
+        }
+        if(n != 0) cout << -1 << "\n";
+        else cout << count << "\n";
+    }
     return 0;
 }
