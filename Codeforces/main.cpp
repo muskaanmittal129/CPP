@@ -14,21 +14,30 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        ll n;
+        int n;
         cin >> n;
-        string s = to_string(n);
-        ll dig = s.length();
-        ll k = dig - 4;
-        ll count = 0;
-
-        while(n >= 2050){
-            ll num = 2050 * (pow(10, k));
-             count = count + (n / num);
-             n = n % num;
-            if(n < num) k--;
+        int a[n];
+        for(int i = 0; i < n; i++){
+            cin >> a[i];
         }
-        if(n != 0) cout << -1 << "\n";
-        else cout << count << "\n";
+        int flag = 0, sqrt;
+
+
+
+            for(int i = 0; i < n; i++){
+                sqrt = std::sqrt(a[i]);
+
+                if((sqrt * sqrt) != a[i])
+                    {
+                        flag = 1;
+                        break;
+                    }
+
+            }
+
+        if(flag == 1) cout << "YES" << "\n";
+        else cout << "NO" << "\n";
+
     }
     return 0;
 }
