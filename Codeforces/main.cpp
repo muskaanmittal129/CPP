@@ -14,29 +14,25 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int n;
-        cin >> n;
+        int n, k;
+        cin >> n >> k;
         int a[n];
         for(int i = 0; i < n; i++){
             cin >> a[i];
         }
-        int flag = 0, sqrt;
-
-
-
-            for(int i = 0; i < n; i++){
-                sqrt = std::sqrt(a[i]);
-
-                if((sqrt * sqrt) != a[i])
-                    {
-                        flag = 1;
-                        break;
-                    }
-
+        int i = 0, j = n-1;
+        while(k>0 && i < n-1){
+            if(a[i] > 0){
+                a[i]--;
+                a[j]++;
+                k--;
             }
+            else if(a[i] == 0) i++;
+        }
+        for(int x = 0; x < n; x++){
+            cout << a[x] << " ";
+        }cout << "\n";
 
-        if(flag == 1) cout << "YES" << "\n";
-        else cout << "NO" << "\n";
 
     }
     return 0;
