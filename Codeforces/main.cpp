@@ -14,25 +14,49 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int n, k;
+        int n, k, num, flag = 0;
         cin >> n >> k;
-        int a[n];
-        for(int i = 0; i < n; i++){
-            cin >> a[i];
+        num = n;
+        int a[n] = {0};
+
+        if(n < 3 && k > 0) flag = 1;
+        else if(k == 0){
+            for(int i = 0; i < n; i++){
+                a[i] = i+1;
+            }
         }
-        int i = 0, j = n-1;
-        while(k>0 && i < n-1){
-            if(a[i] > 0){
-                a[i]--;
-                a[j]++;
+        else if(n > 2){
+            a[0] = 1;
+            a[n-1] = 2;
+            int x = 1;
+            while(k>0 && x < n-1){
+
+                a[x] = num;
+                num--;
+                x += 2;
                 k--;
             }
-            else if(a[i] == 0) i++;
-        }
-        for(int x = 0; x < n; x++){
-            cout << a[x] << " ";
-        }cout << "\n";
+            if(k > 0 && x >= n-1){
+                flag = 1;
+            }
+            else{
+                for(int i = 1; i < n-1; i++){
+                    if(a[i] == 0){
+                        a[i] = num;
+                        num--;
+                    }
+                }
+            }
 
+
+            }
+        if(flag == 1) cout << -1 ;
+        else{
+            for(int i = 0; i < n; i++){
+                cout << a[i] << " ";
+            }
+        }
+        cout << "\n";
 
     }
     return 0;
