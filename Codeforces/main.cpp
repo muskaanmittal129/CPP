@@ -13,14 +13,22 @@ int main() {
     int t;
     cin >> t;
     while(t--) {
-        ll n, m ,k;
-        cin >> n >> m >> k;
-        ll res = ((m-1) * 1) + ((n-1) * m);
-        if(res == k){
-            cout << "YES" << "\n";
-
-        }else{
-            cout << "NO" << "\n";
+        int r, b, d, mx, mn, q;
+        cin >> r >> b >> d;
+        mx = max(r, b);
+        mn = min(r, b);
+        q = mx/mn;
+        if(mx%mn == 0) {
+            if(q-1 <= d)
+                cout << "YES\n";
+            else
+                cout << "NO\n";
+        }
+        else {
+            if(q <= d)
+                cout << "YES\n";
+            else
+                cout << "NO\n";
         }
     }
 
