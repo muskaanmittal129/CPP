@@ -8,56 +8,21 @@ using namespace std;
 #define FASTIO          ios_base::sync_with_stdio(false);cin.tie(NULL);cout<<fixed;cout.precision(10);
 
 
-
 int main() {
     FASTIO
     int t;
     cin >> t;
-    while(t--){
-        int n, k, num, flag = 0;
-        cin >> n >> k;
-        num = n;
-        int a[n] = {0};
+    while(t--) {
+        ll n, m ,k;
+        cin >> n >> m >> k;
+        ll res = ((m-1) * 1) + ((n-1) * m);
+        if(res == k){
+            cout << "YES" << "\n";
 
-        if(n < 3 && k > 0) flag = 1;
-        else if(k == 0){
-            for(int i = 0; i < n; i++){
-                a[i] = i+1;
-            }
+        }else{
+            cout << "NO" << "\n";
         }
-        else if(n > 2){
-            a[0] = 1;
-            a[n-1] = 2;
-            int x = 1;
-            while(k>0 && x < n-1){
-
-                a[x] = num;
-                num--;
-                x += 2;
-                k--;
-            }
-            if(k > 0 && x >= n-1){
-                flag = 1;
-            }
-            else{
-                for(int i = 1; i < n-1; i++){
-                    if(a[i] == 0){
-                        a[i] = num;
-                        num--;
-                    }
-                }
-            }
-
-
-            }
-        if(flag == 1) cout << -1 ;
-        else{
-            for(int i = 0; i < n; i++){
-                cout << a[i] << " ";
-            }
-        }
-        cout << "\n";
-
     }
+
     return 0;
 }
