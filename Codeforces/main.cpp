@@ -12,15 +12,42 @@ int main() {
     FASTIO
     int t;
     cin >> t;
-    while(t--) {
-        string s;
-        cin >> s;
-        int len = s.length();
-        if(len > 10){
-            s = s[0] + to_string(len - 2) + s[len - 1];
-            cout << s << "\n";
+    while(t--){
+        int b, p, f, h, c, mxp, mx, mn, mnp, ans = 0;
+        cin >> b >> p >> f >> h >> c;
+        if(b >= 2){
+            if(h >= c){
+                mxp = h;
+                mx = p;
+                mnp = c;
+                mn = f;
+            }
+            else{
+                mxp = c;
+                mx = f;
+                mnp = h;
+                mn = p;
+            }
+
+            if(b/2 >= mx){
+                ans = mx * mxp;
+                if((b - (mx * 2)) / 2 >= mn ){
+                    ans += (mn * mnp);
+                }else{
+                    ans += (((b - (mx * 2)) / 2) * mnp);
+                }
+            }else{
+                ans = (b/2) * mxp;
+                if((b - ((b/2) * 2)) / 2 >= mn ){
+                    ans += (mn * mnp);
+                }else{
+                    ans += (((b - ((b/2) * 2)) / 2) * mnp);
+                }
+            }
+
         }
-        else cout << s << "\n";
+
+        cout << ans << "\n";
     }
 
     return 0;
