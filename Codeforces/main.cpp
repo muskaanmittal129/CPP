@@ -13,23 +13,14 @@ int main() {
     int t;
     cin >> t;
     while(t--) {
-        int r, b, d, mx, mn, q;
-        cin >> r >> b >> d;
-        mx = max(r, b);
-        mn = min(r, b);
-        q = mx/mn;
-        if(mx%mn == 0) {
-            if(q-1 <= d)
-                cout << "YES\n";
-            else
-                cout << "NO\n";
+        string s;
+        cin >> s;
+        int len = s.length();
+        if(len > 10){
+            s = s[0] + to_string(len - 2) + s[len - 1];
+            cout << s << "\n";
         }
-        else {
-            if(q <= d)
-                cout << "YES\n";
-            else
-                cout << "NO\n";
-        }
+        else cout << s << "\n";
     }
 
     return 0;
