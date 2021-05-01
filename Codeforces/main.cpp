@@ -10,15 +10,23 @@ using namespace std;
 
 int main() {
     FASTIO
-    int t;
-    cin >> t;
-    while(t--){
-        int n;
-        cin >> n;
-        for(int i = 0; i < n; i++){
-            cout << n << " ";
-        }cout << "\n";
+    int a, b, c;
+    cin >> a >> b >> c;
+    int ans;
+    int mx, mn1, mn2;
+    mx = max(a, b);
+    mn1 = min(a, b);
+    if(mx < c){
+        mn2 = mx;
+        mx = c;
+    }else{
+        mn2 = c;
     }
+    ans = (mx + 1) - (mn1 + mn2);
+    if(ans < 1) ans = 0;
+
+    cout << ans;
+
 
 
     return 0;
