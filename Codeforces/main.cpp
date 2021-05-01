@@ -10,22 +10,33 @@ using namespace std;
 
 int main() {
     FASTIO
-    int a, b, c;
-    cin >> a >> b >> c;
-    int ans;
-    int mx, mn1, mn2;
-    mx = max(a, b);
-    mn1 = min(a, b);
-    if(mx < c){
-        mn2 = mx;
-        mx = c;
-    }else{
-        mn2 = c;
-    }
-    ans = (mx + 1) - (mn1 + mn2);
-    if(ans < 1) ans = 0;
+    int t;
+    cin >> t;
+    while(t--){
+        string s;
+        cin >> s;
+        int n = s.length();
+        if(s[0] != 'a') cout << "YES" << "\n" << (s + 'a') << "\n";
+        else if(s[n-1] != 'a' ) cout << "YES" << "\n"  << ('a' + s) << "\n";
+        else{
+            int i = 0, j = n-1, c1 = 0, c2 = 0, flag = 0;
+            while(j >= i){
+                if(s[i] == 'a')
+                    c1++;
+                if(s[j] == 'a')
+                    c2++;
+                if(s[i] != 'a' || s[j] != 'a')
+                {flag = 1;
+                 break;}
+                i++;
+                j--;
+            }
+            if(c2 >= c1 && flag == 1) cout << "YES" << "\n" << (s + 'a') << "\n";
+            else if(c2 < c1 && flag == 1) cout << "YES" << "\n"  << ('a' + s) << "\n";
+            else cout << "NO" << "\n";
 
-    cout << ans;
+        }
+    }
 
 
 
