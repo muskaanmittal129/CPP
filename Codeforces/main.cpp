@@ -13,29 +13,22 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        string s;
-        cin >> s;
-        int n = s.length();
-        if(s[0] != 'a') cout << "YES" << "\n" << (s + 'a') << "\n";
-        else if(s[n-1] != 'a' ) cout << "YES" << "\n"  << ('a' + s) << "\n";
-        else{
-            int i = 0, j = n-1, c1 = 0, c2 = 0, flag = 0;
-            while(j >= i){
-                if(s[i] == 'a')
-                    c1++;
-                if(s[j] == 'a')
-                    c2++;
-                if(s[i] != 'a' || s[j] != 'a')
-                {flag = 1;
-                 break;}
-                i++;
-                j--;
+        ll n, flag = 0;
+        cin >> n;
+        if(n % 2 == 0 && n > 1){
+            ll sqr =  sqrt(n/2);
+            if(sqr * sqr == (n/2)){
+                flag = 1;
             }
-            if(c2 >= c1 && flag == 1) cout << "YES" << "\n" << (s + 'a') << "\n";
-            else if(c2 < c1 && flag == 1) cout << "YES" << "\n"  << ('a' + s) << "\n";
-            else cout << "NO" << "\n";
-
+            else if (ceil(log2(n)) == floor(log2(n))) flag = 1;
         }
+
+        if(flag == 1) cout << "YES" <<"\n";
+        else cout << "NO" << "\n";
+
+
+
+
     }
 
 
