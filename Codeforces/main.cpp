@@ -13,17 +13,12 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        ll n, flag = 0;
-        cin >> n;
-        if(n % 2 == 0){
-            ll sqr =  sqrt(n/2);
-            ll sr4 = sqrt(n/4);
-            if(sqr * sqr == (n/2)) flag = 1;
-            else if(n % 4 == 0 && (sr4 * sr4 == (n/4)) ) flag = 1;
-        }
-
-        if(flag == 1) cout << "YES" <<"\n";
-        else cout << "NO" << "\n";
+       string s;
+       cin >> s;
+       int len = s.length();
+       if(s[len-1] == 'o') cout << "FILIPINO" <<"\n";
+       else if(s[len-1] == 'u') cout << "JAPANESE" <<"\n";
+       else if(s[len-1] == 'a') cout << "KOREAN" <<"\n";
 
 
 
