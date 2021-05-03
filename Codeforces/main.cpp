@@ -15,12 +15,11 @@ int main() {
     while(t--){
         ll n, flag = 0;
         cin >> n;
-        if(n % 2 == 0 && n > 1){
+        if(n % 2 == 0){
             ll sqr =  sqrt(n/2);
-            if(sqr * sqr == (n/2)){
-                flag = 1;
-            }
-            else if (ceil(log2(n)) == floor(log2(n))) flag = 1;
+            ll sr4 = sqrt(n/4);
+            if(sqr * sqr == (n/2)) flag = 1;
+            else if(n % 4 == 0 && (sr4 * sr4 == (n/4)) ) flag = 1;
         }
 
         if(flag == 1) cout << "YES" <<"\n";
