@@ -13,22 +13,30 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        ll n, count;
-        ll arr[10] = {11, 111, 1111, 11111, 111111, 1111111, 11111111, 111111111, 1111111111};
-        cin >> n;
-        string s = to_string(n);
-        ll len = s.length();
-        if(len == 1) count = n;
-        else{
-            count = (len - 1) * 9;
-            ll k = arr[len-2];
-            for(ll i = k; i <= n; i+=k){
-                count++;
-            }
-        }
-        cout << count << "\n";
+       int n, num = 1, k = 0;
+       cin >> n;
 
+       if(n == 2)cout << -1 << "\n";
+       else{
+           int arr[n][n];
+           while(num <= n * n){
 
+               for(int j = 0; j < n; j++){
+                   for(int i = k; i < n; i+=2){
+                       arr[i][j] = num;
+                       num++;
+                   }
+                   if(k == 0) k = 1;
+                   else k = 0;
+               }
+               k = 1;
+           }
+           for(int i = 0; i < n; i++){
+               for(int j = 0; j < n; j++){
+                   cout << arr[i][j] << " ";
+               }cout << "\n";
+           }cout << "\n";
+       }
     }
     return 0;
 }
