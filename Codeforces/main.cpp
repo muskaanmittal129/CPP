@@ -13,28 +13,25 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int n;
+        int n, flag = 0;
         cin >> n;
-        vector<int> a(n), b(n);
-        for(int i = 0; i < n; i++){
-            cin >> a[i];
-        }
-        for(int i = 0; i < n; i++){
-            cin >> b[i];
-        }
-        sort(a.begin(), a.end());
-        sort(b.begin(), b.end());
-        for(int i = 0; i < n; i++){
-            cout << a[i] << " ";
-        }cout << "\n";
-        for(int i = 0; i < n; i++){
-            cout << b[i] << " ";
-        }cout << "\n";
+        string s;
+        cin >> s;
+       unordered_map<char, int> map;
+       for(int i = 0; i < n;){
+           if(map[s[i]] > 0){
+               cout << "NO" << "\n";
+               flag = 1;
+               break;
+           }
+           else{
+               map[s[i]]++;
+               i++;
+               while(i < n && s[i] == s[i-1]) i++;
+           }
+       }
+       if(flag == 0) cout << "YES" << "\n";
+
     }
-
-
-
-
-
     return 0;
 }
