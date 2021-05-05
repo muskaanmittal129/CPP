@@ -13,24 +13,21 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int n, flag = 0;
+        ll n, count;
+        ll arr[10] = {11, 111, 1111, 11111, 111111, 1111111, 11111111, 111111111, 1111111111};
         cin >> n;
-        string s;
-        cin >> s;
-       unordered_map<char, int> map;
-       for(int i = 0; i < n;){
-           if(map[s[i]] > 0){
-               cout << "NO" << "\n";
-               flag = 1;
-               break;
-           }
-           else{
-               map[s[i]]++;
-               i++;
-               while(i < n && s[i] == s[i-1]) i++;
-           }
-       }
-       if(flag == 0) cout << "YES" << "\n";
+        string s = to_string(n);
+        ll len = s.length();
+        if(len == 1) count = n;
+        else{
+            count = (len - 1) * 9;
+            ll k = arr[len-2];
+            for(ll i = k; i <= n; i+=k){
+                count++;
+            }
+        }
+        cout << count << "\n";
+
 
     }
     return 0;
