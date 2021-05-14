@@ -10,33 +10,22 @@ using namespace std;
 
 int main() {
     FASTIO
-    int t;
-    cin >> t;
-    while(t--){
-       int n, num = 1, k = 0;
-       cin >> n;
-
-       if(n == 2)cout << -1 << "\n";
-       else{
-           int arr[n][n];
-           while(num <= n * n){
-
-               for(int j = 0; j < n; j++){
-                   for(int i = k; i < n; i+=2){
-                       arr[i][j] = num;
-                       num++;
-                   }
-                   if(k == 0) k = 1;
-                   else k = 0;
-               }
-               k = 1;
-           }
-           for(int i = 0; i < n; i++){
-               for(int j = 0; j < n; j++){
-                   cout << arr[i][j] << " ";
-               }cout << "\n";
-           }cout << "\n";
-       }
+    int k, n = 12;
+    cin >> k;
+    int arr[n];
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
     }
+    sort(arr, arr + n, greater<>());
+    int num = 0, i = 0, count  = 0;
+    while(num < k && i < n){
+        num += arr[i];
+        count++;
+        i++;
+    }
+    if(num < k) count = -1;
+
+    cout << count;
+
     return 0;
 }
