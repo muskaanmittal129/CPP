@@ -10,22 +10,22 @@ using namespace std;
 
 int main() {
     FASTIO
-    int k, n = 12;
-    cin >> k;
-    int arr[n];
+    int n, m;
+    cin >> n >> m;
+    int a[n];
     for(int i = 0; i < n; i++){
-        cin >> arr[i];
+        cin >> a[i];
     }
-    sort(arr, arr + n, greater<>());
-    int num = 0, i = 0, count  = 0;
-    while(num < k && i < n){
-        num += arr[i];
-        count++;
-        i++;
+    sort(a, a + n);
+    int i = 0, ans = 0;
+    while(m--){
+        if(a[i] < 0){
+            ans += (-a[i]);
+            i++;
+        }
+        else break;
     }
-    if(num < k) count = -1;
-
-    cout << count;
+    cout << ans;
 
     return 0;
 }
