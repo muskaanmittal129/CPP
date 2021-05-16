@@ -10,22 +10,16 @@ using namespace std;
 
 int main() {
     FASTIO
-    int n, m;
-    cin >> n >> m;
-    int a[n];
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
+    int t;
+    cin >> t;
+    while(t--){
+        int k;
+        cin >> k;
+        int w = 100 - k;
+        int gd = __gcd(k, w);
+        cout << (w/gd) + (k/gd) << "\n";
+
     }
-    sort(a, a + n);
-    int i = 0, ans = 0;
-    while(m--){
-        if(a[i] < 0){
-            ans += (-a[i]);
-            i++;
-        }
-        else break;
-    }
-    cout << ans;
 
     return 0;
 }
