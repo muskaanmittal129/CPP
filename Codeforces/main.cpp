@@ -13,11 +13,17 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int k;
-        cin >> k;
-        int w = 100 - k;
-        int gd = __gcd(k, w);
-        cout << (w/gd) + (k/gd) << "\n";
+        string s;
+        cin >> s;
+        int n = s.length();
+        int a = 0, b = 0;
+        for(int i = 0; i < n; i++){
+            if(s[i] == '0') a++;
+            else b++;
+        }
+        int ans = min(a,b);
+        if(ans % 2 == 0) cout << "NET" << "\n";
+        else cout << "DA" << "\n";
 
     }
 
