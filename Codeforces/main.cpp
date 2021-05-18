@@ -10,21 +10,18 @@ using namespace std;
 
 int main() {
     FASTIO
-    int t;
+   int t;
     cin >> t;
     while(t--){
-        string s;
-        cin >> s;
-        int n = s.length();
-        int a = 0, b = 0;
-        for(int i = 0; i < n; i++){
-            if(s[i] == '0') a++;
-            else b++;
-        }
-        int ans = min(a,b);
-        if(ans % 2 == 0) cout << "NET" << "\n";
-        else cout << "DA" << "\n";
-
+        int n, a, b, c, d;
+        cin >> n >> a >> b >> c >> d;
+        int mn = (a-b) * n;
+        int mx = (a+b) * n;
+        int tmn = c-d;
+        int tmx = c+d;
+        if(tmn == tmx && )
+        if((mn >= tmn && mn <= tmx) || (mx >= tmn && mx <= tmx) ) cout << "Yes" <<"\n";
+        else cout << "No" << "\n";
     }
 
     return 0;
