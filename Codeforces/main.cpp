@@ -13,16 +13,19 @@ int main() {
    int t;
     cin >> t;
     while(t--){
-        int n, a, b, c, d;
-        cin >> n >> a >> b >> c >> d;
-        int mn = (a-b) * n;
-        int mx = (a+b) * n;
-        int tmn = c-d;
-        int tmx = c+d;
-        if(tmn == tmx && )
-        if((mn >= tmn && mn <= tmx) || (mx >= tmn && mx <= tmx) ) cout << "Yes" <<"\n";
-        else cout << "No" << "\n";
+     int n, k;
+     cin >> n >> k;
+     int b = ceil((k+n) / 2.0);
+     if(k > n && (((2*b) - n) != k || b > n)){
+         cout << (k - n) << "\n";
+     }
+     else if(k < n && (((2*b) - n) != k || b > n)){
+            cout << 1 << "\n";
+        }
+     else cout << 0 << "\n";
+
     }
+
 
     return 0;
 }
