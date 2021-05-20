@@ -13,19 +13,15 @@ int main() {
    int t;
     cin >> t;
     while(t--){
-     int n, k;
-     cin >> n >> k;
-     int b = ceil((k+n) / 2.0);
-     if(k > n && (((2*b) - n) != k || b > n)){
-         cout << (k - n) << "\n";
+     ll s, back, ans = 0;
+     cin >> s;
+     while(s >= 10){
+         back = s / 10;
+         ans +=  (10 * back);
+         s = (s - (10 * back) ) + back;
      }
-     else if(k < n && (((2*b) - n) != k || b > n)){
-            cout << 1 << "\n";
-        }
-     else cout << 0 << "\n";
-
+     cout << ans + s << "\n";
     }
-
 
     return 0;
 }
