@@ -7,23 +7,27 @@ using namespace std;
 #define lcm(a,b)        (a/(__gcd(a,b)))*b
 #define FASTIO          ios_base::sync_with_stdio(false);cin.tie(NULL);cout<<fixed;cout.precision(10);
 
+ll smallestprime(ll n){
+    for(ll i = 3; i*i <= n; i+=2){
+        if(n % i == 0)return i;
+    }
+    return n;
+}
 
 int main() {
     FASTIO
    int t;
     cin >> t;
-    while(t--) {
-        ll n, count = 0;
-        cin >> n;
-        string s;
-        cin >> s;
-        for(int i = 0; i < n; i++){
-            if(s[i] == '0') count++;
+    while(t--){
+        ll n, k;
+        cin >> n >> k;
+        if(n % 2 == 0)
+            cout << (n + 2*k)<<"\n";
+        else{
+            n += (2 * (k -1)) + smallestprime(n);
+            cout << n << "\n";
         }
-        if(count % 2 == 0 || count == 1)cout << "BOB" << "\n";
-        else cout << "ALICE" << "\n";
 
     }
-
     return 0;
 }
