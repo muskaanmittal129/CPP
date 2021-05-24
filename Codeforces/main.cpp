@@ -15,7 +15,7 @@ int main() {
     while(t--){
         ll n;
         cin >> n;
-        ll a[n],count = 0, temp = -1;
+        ll a[n],count = 0, temp, flag = 0;
         for(ll &i : a){
             cin >> i;
         }
@@ -25,17 +25,21 @@ int main() {
             if(a[i] <= 0)count++;
             else{
               temp = i;
+              flag = 1;
               break;
             }
             if(i < n-1){
-                if (abs(a[i + 1] - a[i]) < diff)
+                if (abs(a[i + 1] - a[i]) < diff && a[i+1] <= 0)
                 {diff = abs(a[i + 1] - a[i]);}
             }
 
         }
-//        cout << temp << " " << diff << "\n";
-        if(a[temp] <= diff)
-            count++;
+
+if(flag == 1){
+    if(a[temp] <= diff)
+        count++;
+}
+
         cout << count << "\n";
     }
 
