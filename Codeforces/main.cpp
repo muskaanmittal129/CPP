@@ -1,31 +1,46 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
-long int countConsecutive(long int N)
-{
-    long long int count = 0;
-    for (long long int L = 1; L * (L + 1) < 2 * N; L++)
-    {
-        double a = (1.0 * N-(L * (L + 1)) / 2) / (L + 1);
-        if (a-(long long int)a == 0.0)
-            count++;
-    }
-    return count+1;
-}
+#define ll              long long int
+#define mod             1000000007
+#define pi              3.141592653589793238
+#define lcm(a,b)        (a/(__gcd(a,b)))*b
+#define FASTIO          ios_base::sync_with_stdio(false);cin.tie(NULL);cout<<fixed;cout.precision(10);
 
 
-int main()
-{
-    int t, q = 1;
+int main() {
+    FASTIO
+    ll t;
     cin >> t;
     while(t--){
-        long long int N;
-        cin >> N;
-        long long int ans = countConsecutive(N);
-        cout << "Case #" << q << ": " << ans << "\n";
-        q++;
+        ll n;
+        cin >> n;
+        ll a[n],count = 0, temp = -1;
+        for(ll &i : a){
+            cin >> i;
+        }
+        sort(a, a+n);
+        ll diff = INT_MAX;
+        for (ll i=0; i<n; i++) {
+            if(a[i] <= 0)count++;
+            else{
+              temp = i;
+              break;
+            }
+            if(i < n-1){
+                if (abs(a[i + 1] - a[i]) < diff)
+                {diff = abs(a[i + 1] - a[i]);}
+            }
+
+        }
+//        cout << temp << " " << diff << "\n";
+        if(a[temp] <= diff)
+            count++;
+        cout << count << "\n";
     }
+
+
+
 
     return 0;
 }
