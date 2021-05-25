@@ -10,41 +10,27 @@ using namespace std;
 
 int main() {
     FASTIO
-    ll t;
+    int t;
     cin >> t;
     while(t--){
-        ll n;
+        int n, flag = 0, diff;
         cin >> n;
-        ll a[n],count = 0, temp, flag = 0;
-        for(ll &i : a){
+        int a[n];
+        for(int &i : a){
             cin >> i;
         }
-        sort(a, a+n);
-        ll diff = INT_MAX;
-        for (ll i=0; i<n; i++) {
-            if(a[i] <= 0)count++;
-            else{
-              temp = i;
-              flag = 1;
-              break;
+        for(int i = 0; i < n-1; i++){
+            for(int j = i+1; j < n; j++){
+                diff = abs(a[i] - a[j]);
+                if(diff % 2 != 0){
+                    flag = 1;
+                    break;
+                }
             }
-            if(i < n-1){
-                if (abs(a[i + 1] - a[i]) < diff && a[i+1] <= 0)
-                {diff = abs(a[i + 1] - a[i]);}
-            }
-
+            if(flag == 1)break;
         }
-
-if(flag == 1){
-    if(a[temp] <= diff)
-        count++;
-}
-
-        cout << count << "\n";
+        if(flag == 0 || n == 1)cout <<"YES" << "\n";
+        else cout << "NO" << "\n";
     }
-
-
-
-
     return 0;
 }
