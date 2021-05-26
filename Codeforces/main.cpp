@@ -10,22 +10,27 @@ using namespace std;
 
 int main() {
     FASTIO
-    ll n;
-    cin >> n;
-    ll a[n];
-    for(ll &i : a)
-        cin >> i;
-    ll low = a[0], high = a[n-1], mx, mn;
-    for(ll i = 0; i < n; i++){
-        if(i == 0)
-            mn =  abs(a[i] - a[i+1]);
-        else if(i == n-1)
-            mn =  abs(a[i] - a[i-1]);
-        else mn = min(abs(a[i] - a[i-1]), abs(a[i] - a[i+1]));
-
-        mx = max(abs(a[i] - low), abs(a[i] - high));
-        cout << mn << " " << mx << "\n";
+    int t;
+    cin >> t;
+    while(t--){
+        int n, flag = 0, diff;
+        cin >> n;
+        int a[n];
+        for(int &i : a){
+            cin >> i;
+        }
+        for(int i = 0; i < n-1; i++){
+            for(int j = i+1; j < n; j++){
+                diff = abs(a[i] - a[j]);
+                if(diff % 2 != 0){
+                    flag = 1;
+                    break;
+                }
+            }
+            if(flag == 1)break;
+        }
+        if(flag == 0 || n == 1)cout <<"YES" << "\n";
+        else cout << "NO" << "\n";
     }
-
     return 0;
 }
