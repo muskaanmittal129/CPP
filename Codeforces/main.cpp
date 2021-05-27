@@ -13,24 +13,23 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int n, flag = 0, diff;
+        ll n, ans = 0;
         cin >> n;
-        int a[n];
-        for(int &i : a){
-            cin >> i;
-        }
-        for(int i = 0; i < n-1; i++){
-            for(int j = i+1; j < n; j++){
-                diff = abs(a[i] - a[j]);
-                if(diff % 2 != 0){
-                    flag = 1;
-                    break;
-                }
+        for(int i = 9, j = 0; i > 0 && j < 9;){
+            if(n >= i){
+                n -= i;
+                ans += i * pow(10, j);
+                i--; j++;
             }
-            if(flag == 1)break;
+            else{
+                ans += n * pow(10, j);
+                n = 0;
+                break;
+            }
         }
-        if(flag == 0 || n == 1)cout <<"YES" << "\n";
-        else cout << "NO" << "\n";
+        if(n > 0)
+            cout << -1 << "\n";
+        else cout << ans << "\n";
     }
     return 0;
 }
