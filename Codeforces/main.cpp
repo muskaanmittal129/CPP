@@ -13,23 +13,13 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        ll n, ans = 0;
+        ll n;
         cin >> n;
-        for(int i = 9, j = 0; i > 0 && j < 9;){
-            if(n >= i){
-                n -= i;
-                ans += i * pow(10, j);
-                i--; j++;
-            }
-            else{
-                ans += n * pow(10, j);
-                n = 0;
-                break;
-            }
-        }
-        if(n > 0)
-            cout << -1 << "\n";
-        else cout << ans << "\n";
+        ll n2 = n % 11;
+        n -= n2 * 111;
+        if(n >= 0 && n % 11 == 0)
+            cout << "YES" << "\n";
+        else cout << "NO" << "\n";
     }
     return 0;
 }
