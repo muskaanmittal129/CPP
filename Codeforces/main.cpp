@@ -13,13 +13,14 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        ll n;
-        cin >> n;
-        ll n2 = n % 11;
-        n -= n2 * 111;
-        if(n >= 0 && n % 11 == 0)
-            cout << "YES" << "\n";
-        else cout << "NO" << "\n";
+        ll a, b, c, d;
+        cin >> a >> b >> c >> d;
+        ll x = 0;
+        if(a > b && c > d){
+            x = ceil((a-b) / ((c-d)*1.0));
+        }
+        if(a>b && d>=c)cout << -1 << "\n";
+        else cout << (b + c*x) << "\n";
     }
     return 0;
 }
