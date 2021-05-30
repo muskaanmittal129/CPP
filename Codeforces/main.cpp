@@ -10,24 +10,27 @@ using namespace std;
 
 int main() {
     FASTIO
-    int t;
-    cin >> t;
-    while(t--){
-        ll n;
-        cin >> n;
-        ll a[n];
-        for(ll &i : a){
-            cin >> i;
-        }
-        ll mx = 0, ans = -2;
-        for(int i = 0; i < n; i++){
-            if(a[i] > mx && ((i>0 && a[i-1] < a[i]) || (i < n-1 && a[i+1] < a[i]))){
-                ans = i;
-                mx = a[i];
-            }
-        }
-        cout << ans+1 << "\n";
-
+    ll n;
+    cin >> n;
+    ll b[n];
+    for(ll &i : b){
+        cin >> i;
     }
+    vector<ll>v;
+    v.push_back(b[0]);
+    v.push_back(b[1] + v.back());
+    ll mx = b[0];
+    for(ll i = 2; i < n; i++){
+        mx = max(mx, v.back());
+        ll temp = b[i] + mx;
+        v.push_back(temp);
+    }
+    for(ll x : v){
+        cout << x << " ";
+    }
+
+
+
+
     return 0;
 }
