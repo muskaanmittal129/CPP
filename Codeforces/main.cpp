@@ -13,14 +13,21 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        ll a, b, c, d;
-        cin >> a >> b >> c >> d;
-        ll x = 0;
-        if(a > b && c > d){
-            x = ceil((a-b) / ((c-d)*1.0));
+        ll n;
+        cin >> n;
+        ll a[n];
+        for(ll &i : a){
+            cin >> i;
         }
-        if(a>b && d>=c)cout << -1 << "\n";
-        else cout << (b + c*x) << "\n";
+        ll mx = 0, ans = -2;
+        for(int i = 0; i < n; i++){
+            if(a[i] > mx && ((i>0 && a[i-1] < a[i]) || (i < n-1 && a[i+1] < a[i]))){
+                ans = i;
+                mx = a[i];
+            }
+        }
+        cout << ans+1 << "\n";
+
     }
     return 0;
 }
