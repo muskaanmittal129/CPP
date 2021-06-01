@@ -10,26 +10,20 @@ using namespace std;
 
 int main() {
     FASTIO
-    ll n;
-    cin >> n;
-    string s = to_string(n);
-    ll i, j = 0;
-    for(i = 0; i < s.length(); i += j ){
-        if(s.substr(i, 1) == "1"){
-            j = 1;
-            if(i < s.length()-1 && s.substr(i, 2) == "14"){
-                j = 2;
-                if(i < s.length()-2 && s.substr(i, 3) == "144"){
-                    j = 3;
-                }
-            }
-        }
-        else break;
-    }
-    if(i >= s.length() )cout << "YES" << "\n";
-    else cout << "NO" << "\n";
-
-
+    ll t;
+     cin >> t;
+     while(t--){
+         ll n;
+         cin >> n;
+         string s = "9";
+         ll num = 8;
+         for(ll i = 0; i < n-1; i++){
+             s += to_string(num);
+             if(num == 9)num = 0;
+             else num += 1;
+         }
+         cout << s << "\n";
+     }
 
 
 
