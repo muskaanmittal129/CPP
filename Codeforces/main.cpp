@@ -10,21 +10,30 @@ using namespace std;
 
 int main() {
     FASTIO
-    ll t;
-     cin >> t;
-     while(t--){
-         ll n;
-         cin >> n;
-         string s = "9";
-         ll num = 8;
-         for(ll i = 0; i < n-1; i++){
-             s += to_string(num);
-             if(num == 9)num = 0;
-             else num += 1;
-         }
-         cout << s << "\n";
-     }
-
+    ll n;
+    cin >> n;
+    ll arr[n];
+    for(ll &i : arr){
+        cin >> i;
+    }
+    ll ans = 0;
+    sort(arr, arr+n);
+    for(ll i = 0; i < n; i+=2){
+        if(i == n-1){
+            if(arr[i] < 0)ans +=  (abs(arr[i] + 1)+2);
+            else if(arr[i] == 0)ans += 1;
+            else ans += arr[i] - 1;
+        }
+        else if(arr[i] <= 0 && arr[i+1] <= 0){
+           ans +=  abs(arr[i] + 1) + abs(arr[i+1] + 1);
+        }
+        else if (arr[i+1] > 0){
+            if(arr[i] < 0)ans +=  (abs(arr[i] + 1)+2) + arr[i+1] - 1;
+            else if(arr[i] == 0)ans += 1 + arr[i+1] - 1;
+            else ans += arr[i] - 1 + arr[i+1] - 1;
+        }
+    }
+    cout << ans;
 
 
     return 0;
